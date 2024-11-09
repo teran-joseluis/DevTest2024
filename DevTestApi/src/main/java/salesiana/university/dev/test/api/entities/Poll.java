@@ -1,8 +1,6 @@
 package salesiana.university.dev.test.api.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +24,4 @@ public class Poll {
 
   @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
   private List<Option> options;
-
-  @OneToOne()
-  private Vote vote;
 }

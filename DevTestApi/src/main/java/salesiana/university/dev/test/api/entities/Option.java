@@ -28,7 +28,4 @@ public class Option {
   @JoinColumn(name = "poll_id")
   @JsonIgnore()
   private Poll poll;
-
-  @OneToOne
-  private Vote vote;
 }

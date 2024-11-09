@@ -3,6 +3,7 @@ package salesiana.university.dev.test.api.services.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import salesiana.university.dev.test.api.entities.Option;
+import salesiana.university.dev.test.api.mappers.requests.option.CreateOptionRequest;
 import salesiana.university.dev.test.api.repositories.IOptionRepository;
 import salesiana.university.dev.test.api.services.contracts.IOptionService;
 
@@ -24,22 +25,17 @@ public class OptionService implements IOptionService {
   }
 
   @Override
-  public Optional<Option> findOptionById(Long id) {
-    return optionRepository.findById(id);
-  }
+  public Option saveOption(CreateOptionRequest optionRequest) {
+    Option option = new Option();
+    option.setName(optionRequest.name());
 
-  @Override
-  public Option saveOption(Option option) {
-    return null;
-  }
+    Option savedOption = optionRepository.save(option);
 
-  @Override
-  public Option updateOption(Option option) {
-    return optionRepository.save(option);
-  }
-
-  @Override
-  public boolean deleteOption(Long id) {
-    return false;
+    return new Option(
+            savedOption.getOptionId(),
+            savedOption.getName(),
+            savedOption.getVotes(),
+            savedOption.getPoll()
+    );
   }
 }
