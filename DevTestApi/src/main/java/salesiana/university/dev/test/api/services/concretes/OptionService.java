@@ -25,6 +25,11 @@ public class OptionService implements IOptionService {
   }
 
   @Override
+  public Optional<Option> findOptionById(Long optionId) {
+    return optionRepository.findById(optionId);
+  }
+
+  @Override
   public Option saveOption(CreateOptionRequest optionRequest) {
     Option option = new Option();
     option.setName(optionRequest.name());

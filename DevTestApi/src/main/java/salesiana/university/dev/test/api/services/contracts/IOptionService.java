@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface IOptionService {
   List<Option> findAllOptions();
+  Optional<Option> findOptionById(Long optionId);
   Option saveOption(CreateOptionRequest optionRequest);
 }
