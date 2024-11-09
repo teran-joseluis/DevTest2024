@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import salesiana.university.dev.test.api.entities.Option;
+import salesiana.university.dev.test.api.mappers.requests.option.CreateOptionRequest;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public record CreatePollRequest(
         String name,
 
         @NotEmpty(message = "Poll must have at least two options.")
-        List<Option> options
+        List<CreateOptionRequest> options
 ) {
 }
